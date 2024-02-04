@@ -2,6 +2,7 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    kotlin("plugin.serialization").version(libs.versions.serialization)
 }
 
 kotlin {
@@ -28,7 +29,24 @@ kotlin {
     
     sourceSets {
         commonMain.dependencies {
-            // put your Multiplatform dependencies here
+            // Datetime
+            implementation(libs.datetime)
+
+            // Coroutines
+            implementation(libs.coroutines.core)
+
+            // Ktor
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.content.negotiation)
+            implementation(libs.ktor.serialization)
+        }
+        androidMain.dependencies {
+            // Ktor
+            implementation(libs.ktor.android)
+        }
+        iosMain.dependencies {
+            // Ktor
+            implementation(libs.ktor.darwin)
         }
     }
 }
