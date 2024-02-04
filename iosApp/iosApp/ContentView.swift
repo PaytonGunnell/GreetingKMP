@@ -20,7 +20,8 @@ extension ContentView {
         func startObserving() {
             Task {
                 do {
-                    let s = asyncSequence(for: Greeting().greet())
+                    let sequence = asyncSequence(for: Greeting().greet())
+
                     for try await phrase in sequence {
                         self.greetings.append(phrase)
                     }

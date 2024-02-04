@@ -11,6 +11,8 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
+		B40707342B70530F008E09BA /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = B4F1A04D2B704E2F00531C53 /* KMPNativeCoroutinesAsync */; };
+		B40707352B70530F008E09BA /* KMPNativeCoroutinesCore in Frameworks */ = {isa = PBXBuildFile; productRef = B4F1A04E2B704E2F00531C53 /* KMPNativeCoroutinesCore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,18 @@
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB3632DC29227652001CCB65 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B4A7A6662B7052990079328B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B40707352B70530F008E09BA /* KMPNativeCoroutinesCore in Frameworks */,
+				B40707342B70530F008E09BA /* KMPNativeCoroutinesAsync in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		058557D7273AAEEB004C7B11 /* Preview Content */ = {
@@ -87,15 +101,16 @@
 				F36B1CEA2AD836FC00CB74D5 /* Compile Kotlin */,
 				7555FF77242A565900829871 /* Sources */,
 				7555FF79242A565900829871 /* Resources */,
+				B4A7A6662B7052990079328B /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B4A7A6682B7052BC0079328B /* PBXTargetDependency */,
+				B4A7A66A2B7052BC0079328B /* PBXTargetDependency */,
 			);
 			name = iosApp;
 			packageProductDependencies = (
-				B4F1A04B2B704DFD00531C53 /* KMPNativeCoroutinesAsync */,
-				B4F1A04C2B704DFD00531C53 /* KMPNativeCoroutinesCore */,
 				B4F1A04D2B704E2F00531C53 /* KMPNativeCoroutinesAsync */,
 				B4F1A04E2B704E2F00531C53 /* KMPNativeCoroutinesCore */,
 			);
@@ -183,6 +198,17 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B4A7A6682B7052BC0079328B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = B4A7A6672B7052BC0079328B /* KMPNativeCoroutinesAsync */;
+		};
+		B4A7A66A2B7052BC0079328B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = B4A7A6692B7052BC0079328B /* KMPNativeCoroutinesCore */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		7555FFA3242A565B00829871 /* Debug */ = {
@@ -400,12 +426,12 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B4F1A04B2B704DFD00531C53 /* KMPNativeCoroutinesAsync */ = {
+		B4A7A6672B7052BC0079328B /* KMPNativeCoroutinesAsync */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B4F1A04A2B704DFD00531C53 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;
 			productName = KMPNativeCoroutinesAsync;
 		};
-		B4F1A04C2B704DFD00531C53 /* KMPNativeCoroutinesCore */ = {
+		B4A7A6692B7052BC0079328B /* KMPNativeCoroutinesCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B4F1A04A2B704DFD00531C53 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;
 			productName = KMPNativeCoroutinesCore;
