@@ -1,6 +1,7 @@
 package org.kmp.testing
 
 class CurrentRuntime(val name: String, rawVersion: String?) {
+
     companion object {
         val versionRegex = Regex("^[0-9]+(\\.[0-9]+)?")
     }
@@ -14,3 +15,5 @@ class CurrentRuntime(val name: String, rawVersion: String?) {
         return result?.value ?: "unknown"
     }
 }
+
+expect fun determineCurrentRuntime(): CurrentRuntime
