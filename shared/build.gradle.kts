@@ -1,3 +1,6 @@
+import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
+import org.jetbrains.kotlin.gradle.plugin.sources.android.androidSourceSetInfo
+import org.jetbrains.kotlin.gradle.plugin.sources.dependsOnClosure
 
 plugins {
     id("org.jetbrains.kotlin.multiplatform").version("1.9.22")
@@ -33,7 +36,17 @@ kotlin {
     }
     
     jvm()
-    
+
+//    val onPhone = System.getenv("SDK_NAME")?.startsWith("iphoneos") ?: false
+//    if (onPhone) {
+//        iosArm64("ios")
+//    } else {
+//        iosX64("ios")
+//    }
+
+//    val xcf = XCFramework()
+
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -41,9 +54,16 @@ kotlin {
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
             baseName = "Shared"
+//            xcf.add(this)
             isStatic = true
+//            export(project(""))
         }
     }
+
+//    iosX64().binaries.framework {
+//        baseName = "Shared"
+//
+//    }
     
     sourceSets {
         val ktorVersion = "2.3.8"
@@ -52,6 +72,7 @@ kotlin {
         all {
             languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
         }
+
         commonMain.dependencies {
             // Datetime
             implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
@@ -81,6 +102,7 @@ kotlin {
             // SQLDelight
             implementation("app.cash.sqldelight:android-driver:$sqldelightVersion")
         }
+
         iosMain.dependencies {
             // Ktor
             implementation("io.ktor:ktor-client-darwin:$ktorVersion")
