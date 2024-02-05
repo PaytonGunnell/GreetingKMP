@@ -8,4 +8,6 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform) apply false
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.kmpNativeCoroutines) apply false
+    id("app.cash.sqldelight") version "2.0.1" apply false
 }
+

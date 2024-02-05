@@ -5,6 +5,16 @@ plugins {
     kotlin("plugin.serialization").version(libs.versions.serialization)
     id("com.google.devtools.ksp")
     id("com.rickclephas.kmp.nativecoroutines")
+//    id("app.cash.sqldelight")
+    id("app.cash.sqldelight") version "2.0.1"
+}
+
+sqldelight {
+    databases {
+        create("AppDatabase") {
+            packageName.set("com.jetbrains.handson.kmm.shared.cache")
+        }
+    }
 }
 
 kotlin {
@@ -44,6 +54,9 @@ kotlin {
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.content.negotiation)
             implementation(libs.ktor.serialization)
+
+            // SQLDelight
+//            implementation("com.squareup.sqldelight:runtime:2.0.1")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -51,10 +64,20 @@ kotlin {
         androidMain.dependencies {
             // Ktor
             implementation(libs.ktor.android)
+
+            // SQLDelight
+            implementation("app.cash.sqldelight:android-driver:2.0.1")
         }
         iosMain.dependencies {
             // Ktor
             implementation(libs.ktor.darwin)
+
+            // SQLDelight
+            implementation("app.cash.sqldelight:native-driver:2.0.1")
+        }
+        jvmMain.dependencies {
+            // SQLDelight
+            implementation("app.cash.sqldelight:sqlite-driver:2.0.1")
         }
     }
 }
@@ -66,3 +89,4 @@ android {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
 }
+
