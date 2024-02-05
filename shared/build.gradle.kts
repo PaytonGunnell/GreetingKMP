@@ -5,18 +5,25 @@ plugins {
     kotlin("plugin.serialization").version(libs.versions.serialization)
     id("com.google.devtools.ksp")
     id("com.rickclephas.kmp.nativecoroutines")
-//    id("app.cash.sqldelight") version "2.0.1"
+    id("app.cash.sqldelight") //version "2.0.1"
 }
 
-//sqldelight {
-//    databases {
-//        create("Database") {
-//            packageName.set("com.example")
-//        }
-//    }
-//}
+sqldelight {
+    databases {
+        create("Database") {
+            packageName.set("com.example")
+        }
+    }
+}
 
 kotlin {
+    targets.all {
+        compilations.all {
+            compilerOptions.configure {
+                freeCompilerArgs.add("-Xexpect-actual-classes")
+            }
+        }
+    }
     androidTarget {
         compilations.all {
             kotlinOptions {
@@ -55,7 +62,8 @@ kotlin {
             implementation(libs.ktor.serialization)
 
             // SQLDelight
-//            implementation("com.squareup.sqldelight:runtime:2.0.1")
+            implementation(libs.sqldelight.runtime)
+//            implementation("com.squareup.sqldelight:runtime:1.5.5")
 
             // Koin (Dependency Injection)
         //    implementation(libs.koin.core)
@@ -69,18 +77,19 @@ kotlin {
             implementation(libs.ktor.android)
 
             // SQLDelight
-//            implementation(libs.sqldelight.android.driver)
+            implementation(libs.sqldelight.android.driver)
         }
         iosMain.dependencies {
             // Ktor
             implementation(libs.ktor.darwin)
 
             // SQLDelight
-//            implementation(libs.sqldelight.native.driver)
+            implementation(libs.sqldelight.native.driver)
+            implementation("co.touchlab:stately-common:2.0.6")
         }
         jvmMain.dependencies {
             // SQLDelight
-//            implementation(libs.sqldelight.driver)
+            implementation(libs.sqldelight.driver)
         }
     }
 }
