@@ -1,8 +1,8 @@
-import app.cash.sqldelight.db.SqlDriver
-import com.example.Database
+//import app.cash.sqldelight.db.SqlDriver
+//import com.example.Database
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
-import comexample.DatabaseQueries
-import comexample.HockeyPlayer
+//import comexample.DatabaseQueries
+//import comexample.HockeyPlayer
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -30,16 +30,16 @@ class Greeting {
         emit("Name: ${runtime.name}, Version: ${runtime.version}, ${runtime}")
     }
 
-    fun savePlayerName(input: String, driver: SqlDriver) {
-        val database = Database(driver)
-        val playerQueries: DatabaseQueries = database.databaseQueries
-
-        println(playerQueries.selectAll().executeAsList())
-
-        playerQueries.insert(player_number = 10, full_name = input)
-        println(playerQueries.selectAll().executeAsList())
-
-//        val player = HockeyPlayer(10, "Ronald McDonald")
-//        playerQueries.insertFullPlayerObject(player)
-    }
+//    fun savePlayerName(input: String, driver: SqlDriver) {
+//        val database = Database(driver)
+//        val playerQueries: DatabaseQueries = database.databaseQueries
+//
+//        println(playerQueries.selectAll().executeAsList())
+//
+//        playerQueries.insert(player_number = 10, full_name = input)
+//        println(playerQueries.selectAll().executeAsList())
+//
+////        val player = HockeyPlayer(10, "Ronald McDonald")
+////        playerQueries.insertFullPlayerObject(player)
+//    }
 }

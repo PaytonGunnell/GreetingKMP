@@ -5,8 +5,6 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
-
-
 }
 
 kotlin {
@@ -31,6 +29,10 @@ kotlin {
             implementation(libs.lifecycle.runtime.compose)
             implementation(libs.androidx.activity.compose)
             implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+            // Koin
+            implementation(libs.koin.android)
+            implementation(libs.koin.androidx.compose)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -48,6 +50,10 @@ kotlin {
 }
 
 android {
+//    composeOptions {
+//        kotlinCompilerExtensionVersion = "1.5.8"
+//    }
+
     namespace = "com.example.greetingkmp"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
