@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import org.kmp.testing.determineCurrentRuntime
 
 @Composable
 fun App2(mainViewModel: MainViewModel = viewModel()) {
@@ -26,6 +27,7 @@ fun App2(mainViewModel: MainViewModel = viewModel()) {
                 Text(greeting)
                 Divider()
             }
+            Text("Current Runtime: ${determineCurrentRuntime()}")
         }
     }
 }
