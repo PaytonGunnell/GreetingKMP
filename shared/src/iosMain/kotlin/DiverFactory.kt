@@ -1,10 +1,9 @@
-package com.jetbrains.handson.kmm.shared.cache
-
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.native.NativeSqliteDriver
+import com.example.Database
 
-actual class DatabaseDriverFactory {
+actual class DriverFactory {
     actual fun createDriver(): SqlDriver {
-        return NativeSqliteDriver(AppDatabase.Schema, "test.db")
+        return NativeSqliteDriver(Database.Schema, "test.db")
     }
 }

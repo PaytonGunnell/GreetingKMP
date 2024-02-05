@@ -11,8 +11,8 @@ plugins {
 
 sqldelight {
     databases {
-        create("AppDatabase") {
-            packageName.set("com.jetbrains.handson.kmm.shared.cache")
+        create("Database") {
+            packageName.set("com.example")
         }
     }
 }
