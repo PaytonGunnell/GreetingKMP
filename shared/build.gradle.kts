@@ -1,11 +1,11 @@
 
 plugins {
-    alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.androidLibrary)
-    kotlin("plugin.serialization").version(libs.versions.serialization)
+    id("org.jetbrains.kotlin.multiplatform").version("1.9.22")
+    id("com.android.library").version("8.2.1")
+    kotlin("plugin.serialization").version("1.9.22")
     id("com.google.devtools.ksp")
     id("com.rickclephas.kmp.nativecoroutines")
-    id("app.cash.sqldelight") //version "2.0.1"
+    id("app.cash.sqldelight").version("2.0.1")
 }
 
 sqldelight {
@@ -46,46 +46,47 @@ kotlin {
     }
     
     sourceSets {
+        val ktorVersion = "2.3.8"
+        val sqldelightVersion = "2.0.1"
+
         all {
             languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
         }
         commonMain.dependencies {
             // Datetime
-            implementation(libs.datetime)
+            implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
 
             // Coroutines
-            implementation(libs.coroutines.core)
+            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
 
             // Ktor
-            implementation(libs.ktor.client.core)
-            implementation(libs.ktor.content.negotiation)
-            implementation(libs.ktor.serialization)
+            implementation("io.ktor:ktor-client-core:$ktorVersion")
+            implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+            implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
 
             // SQLDelight
-            implementation(libs.sqldelight.runtime)
-//            implementation("com.squareup.sqldelight:runtime:1.5.5")
+            implementation("app.cash.sqldelight:runtime:$sqldelightVersion")
 
-            // Koin (Dependency Injection)
-        //    implementation(libs.koin.core)
-        //    implementation(libs.koin.test)
+            // Koin
+            implementation("io.insert-koin:koin-core:3.5.3")
+            implementation("io.insert-koin:koin-test:3.5.3")
         }
         commonTest.dependencies {
-            implementation(libs.kotlin.test)
+            implementation("org.jetbrains.kotlin:kotlin-test:1.9.22")
         }
         androidMain.dependencies {
             // Ktor
-            implementation(libs.ktor.android)
+            implementation("io.ktor:ktor-client-android:$ktorVersion")
 
             // SQLDelight
-            implementation(libs.sqldelight.android.driver)
+            implementation("app.cash.sqldelight:android-driver:$sqldelightVersion")
         }
         iosMain.dependencies {
             // Ktor
-            implementation(libs.ktor.darwin)
+            implementation("io.ktor:ktor-client-darwin:$ktorVersion")
 
             // SQLDelight
-            implementation(libs.sqldelight.native.driver)
-            implementation("co.touchlab:stately-common:2.0.6")
+            implementation("app.cash.sqldelight:native-driver:$sqldelightVersion")
         }
         jvmMain.dependencies {
             // SQLDelight
